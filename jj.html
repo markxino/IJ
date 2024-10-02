@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inject Email into URL</title>
+  <script>
+    // Function to get query parameters from the URL
+    function getQueryParam(param) {
+      var urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Function to inject the email into the link
+    function injectEmail() {
+      var email = getQueryParam('email');
+      if (email) {
+        // Create the new URL with the email appended
+        var newUrl = 'https://kuatec.com/?email=' + email;
+
+        // Inject the new URL into the link element
+        document.getElementById('dynamicLink').href = newUrl;
+        document.getElementById('dynamicLink').innerText = newUrl;
+      } else {
+        document.getElementById('dynamicLink').innerText = 'No email provided in the URL';
+      }
+    }
+
+    // Run the function when the page loads
+    window.onload = injectEmail;
+  </script>
+</head>
+<body>
+  <h1>Email Injection Example</h1>
+  <p>Your personalized link is: <a id="dynamicLink" href="#">Loading...</a></p>
+</body>
+</html>
