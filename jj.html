@@ -11,16 +11,15 @@
       return urlParams.get(param);
     }
 
-    // Function to inject the email into the link
+    // Function to inject the email into the link and redirect
     function injectEmail() {
       var email = getQueryParam('email');
       if (email) {
-        // Create the new URL with the email appended
+        // Create the new URL with the email appended for kuatec.com
         var newUrl = 'https://kuatec.com/?email=' + email;
 
-        // Inject the new URL into the link element
-        document.getElementById('dynamicLink').href = newUrl;
-        document.getElementById('dynamicLink').innerText = newUrl;
+        // Redirect to the new URL
+        window.location.href = newUrl;
       } else {
         document.getElementById('dynamicLink').innerText = 'No email provided in the URL';
       }
@@ -31,7 +30,7 @@
   </script>
 </head>
 <body>
-  <h1>Email Injection Example</h1>
-  <p>Your personalized link is: <a id="dynamicLink" href="#">Loading...</a></p>
+  <h1>Redirecting...</h1>
+  <p>If you are not redirected, <a id="dynamicLink" href="#">click here</a>.</p>
 </body>
 </html>
